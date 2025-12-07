@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.user-menu {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.auth-container {
+    max-width: 400px;
+    margin: 3rem auto;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    background: white;
+    color: #667eea;
+}
+
+.auth-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.auth-form h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.auth-form input,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.auth-form input:focus,
+select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-large {
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.btn-secondary {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #667eea;
+}
+
+.hint {
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.ticket-card {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s;
+}
+
+.ticket-card:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.ticket-card.active {
+    border-color: #4caf50;
+    background: #f1f8f4;
+}
+
+.ticket-card.used {
+    border-color: #ff9800;
+    background: #fff3e0;
+}
+
+.ticket-card.pending {
+    border-color: #2196f3;
+    background: #e3f2fd;
+}
+
+.ticket-card.expired {
+    border-color: #999;
+    background: #f5f5f5;
+    opacity: 0.7;
+}
+
+.ticket-type {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.ticket-route {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.ticket-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.ticket-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-active {
+    background: #4caf50;
+    color: white;
+}
+
+.status-used {
+    background: #ff9800;
+    color: white;
+}
+
+.status-pending {
+    background: #2196f3;
+    color: white;
+}
+
+.status-expired {
+    background: #999;
+    color: white;
+}
+
+.ticket-dates {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 0.5rem;
+}
+
+.payments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.payment-item {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.payment-item.completed {
+    border-color: #4caf50;
+    background: #f1f8f4;
+}
+
+.payment-item.failed {
+    border-color: #f44336;
+    background: #ffebee;
+}
+
+.payment-info {
+    flex: 1;
+}
+
+.payment-amount {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.payment-method {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.payment-date {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.empty-state {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+}
+
+.message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.message.success {
+    background: #4caf50;
+    color: white;
+}
+
+.message.error {
+    background: #f44336;
+    color: white;
+}
+
+.message.info {
+    background: #2196f3;
+    color: white;
+}

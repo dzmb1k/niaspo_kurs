@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketingHub - Билеты на транспорт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🎫 TicketingHub</h1>
+            <div id="user-menu" class="user-menu" style="display: none;">
+                <span id="username-display"></span>
+                <button onclick="logout()" class="btn-secondary">Выйти</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Login/Register Section -->
+        <div id="auth-section">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="showLogin()">Вход</button>
+                    <button class="tab-btn" onclick="showRegister()">Регистрация</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form">
+                    <h2>Вход в систему</h2>
+                    <input type="text" id="login-username" placeholder="Логин" required>
+                    <input type="password" id="login-password" placeholder="Пароль" required>
+                    <button type="submit" class="btn-primary">Войти</button>
+                    <p class="hint">Тестовый аккаунт: admin / admin</p>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form" style="display: none;">
+                    <h2>Регистрация</h2>
+                    <input type="text" id="register-username" placeholder="Логин" required>
+                    <input type="email" id="register-email" placeholder="Email" required>
+                    <input type="password" id="register-password" placeholder="Пароль" required>
+                    <button type="submit" class="btn-primary">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main App Section -->
+        <div id="app-section" style="display: none;">
+            <!-- Ticket Purchase -->
+            <section class="card">
+                <h2>Купить билет</h2>
+                <form id="ticket-form">
+                    <div class="form-group">
+                        <label>Тип билета:</label>
+                        <select id="ticket-type" required>
+                            <option value="single">Разовый (50₽)</option>
+                            <option value="daily">Дневной (150₽)</option>
+                            <option value="weekly">Недельный (500₽)</option>
+                            <option value="monthly">Месячный (1500₽)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Маршрут:</label>
+                        <select id="ticket-route" required>
+                            <option value="Метро Линия 1">Метро Линия 1</option>
+                            <option value="Метро Линия 2">Метро Линия 2</option>
+                            <option value="Автобус №10">Автобус №10</option>
+                            <option value="Троллейбус №5">Троллейбус №5</option>
+                            <option value="Все виды транспорта">Все виды транспорта</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Способ оплаты:</label>
+                        <select id="payment-method" required>
+                            <option value="card">Банковская карта</option>
+                            <option value="apple_pay">Apple Pay</option>
+                            <option value="google_pay">Google Pay</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary btn-large">Купить билет</button>
+                </form>
+            </section>
+
+            <!-- My Tickets -->
+            <section class="card">
+                <h2>Мои билеты</h2>
+                <div id="tickets-list" class="tickets-grid">
+                    <p class="empty-state">Загрузка...</p>
+                </div>
+            </section>
+
+            <!-- Payment History -->
+            <section class="card">
+                <h2>История платежей</h2>
+                <div id="payments-list" class="payments-list">
+                    <p class="empty-state">Загрузка...</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Message Display -->
+        <div id="message" class="message" style="display: none;"></div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

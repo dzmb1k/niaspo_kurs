@@ -1,0 +1,67 @@
+services:
+  # Nginx - Web server and reverse proxy
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - ticketing-net
+    restart: unless-stopped
+
+  # Backend - Flask API
+  backend:
+    build: ./backend
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432/ticketing_db
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-secret-key-change-in-production
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - ticketing-net
+    restart: unless-stopped
+
+  # Worker - Background tasks
+  worker:
+    build: ./worker
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+    networks:
+      - ticketing-net
+    restart: unless-stopped
+
+  # PostgreSQL - Database
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ticketing_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - ticketing-net
+    restart: unless-stopped
+
+  # Redis - Cache and queue
+  redis:
+    image: redis:alpine
+    networks:
+      - ticketing-net
+    restart: unless-stopped
+
+networks:
+  ticketing-net:
+    driver: bridge
+
+volumes:
+  postgres-data:
